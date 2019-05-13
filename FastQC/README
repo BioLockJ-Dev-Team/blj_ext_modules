@@ -1,0 +1,14 @@
+
+Build docker image:
+docker build -t biolockj/fast_q_c .
+
+Test docker image:
+docker run -e BLJ_OPTIONS="-docker -b /Users/ivory/Documents/BioLockJ_workspace/pipelines -C /Users/ivory/git/blj_support/resources/test/config/docker/local -c /config/testDockerFastQC.properties -i /Users/ivory/git/blj_support/resources/test/data/wgs_fastq" \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v /Users/ivory/git/blj_support/resources/test/data/wgs_fastq:/input \
+-v /Users/ivory/Documents/BioLockJ_workspace/pipelines:/pipelines:delegated \
+-v /Users/ivory/Documents/Repos/blj_ext_modules/FastQC/test:/config \
+-v /Users/ivory/Documents/Repos/BioLockJ/dist:/app/biolockj/dist \
+--rm biolockj/blj_manager
+
+
