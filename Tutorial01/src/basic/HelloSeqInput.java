@@ -4,11 +4,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
-import biolockj.Config;
-import biolockj.Constants;
 import biolockj.module.SeqModuleImpl;
 import biolockj.util.BashScriptBuilder;
-import biolockj.util.SeqUtil;
 
 public class HelloSeqInput extends SeqModuleImpl
 {
