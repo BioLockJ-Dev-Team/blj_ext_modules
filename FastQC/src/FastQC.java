@@ -9,7 +9,7 @@ import biolockj.module.SeqModule;
 import biolockj.module.SeqModuleImpl;
 import biolockj.util.BashScriptBuilder;
 import biolockj.util.BioLockJUtil;
-import biolockj.util.RuntimeParamUtil;
+import biolockj.util.DockerUtil;
 
 /**
  * Run FastQC to assess input sequence quality. This module is most efficient if
@@ -35,7 +35,7 @@ public class FastQC extends SeqModuleImpl implements SeqModule
 		final List<List<String>> data = new ArrayList<>();
 		int batchSize = Config.requirePositiveInteger( this, SCRIPT_BATCH_SIZE );
 
-		if( RuntimeParamUtil.isDockerMode() )
+		if( DockerUtil.inDockerEnv() )
 		{
 			batchSize = files.size();
 		}
