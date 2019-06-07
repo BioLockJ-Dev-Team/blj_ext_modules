@@ -146,7 +146,7 @@ public class FastQC extends SeqModuleImpl implements SeqModule
 	public void executeTask() throws Exception
 	{
 		String propName = this.getClass().getSimpleName() + ScriptModule.SCRIPT_BATCH_SIZE.substring( ScriptModule.SCRIPT_BATCH_SIZE.indexOf( "." ) + 1 );
-		if( Config.getModuleProp( this, propName ) == null )
+		if( Config.getModuleProperty( this, propName ) == null )
 		{
 			Config.setConfigProperty( propName, "1" );
 		}
