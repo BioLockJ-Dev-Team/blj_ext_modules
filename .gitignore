@@ -1,3 +1,5 @@
 *.jar
 *.classpath
 .DS_Store
+pipelines/
+
