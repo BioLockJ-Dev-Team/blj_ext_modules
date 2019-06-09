@@ -41,7 +41,7 @@ public class FastQC extends SeqModuleImpl implements SeqModule
 			batchSize = files.size();
 		}
 
-		int fullBatches = (int) java.lang.Math.floor( files.size() / batchSize ); // TODO maybe switch to integer division
+		int fullBatches = files.size() / batchSize;
 		int startingIndex = 0;
 		int endingIndex;
 
@@ -146,7 +146,7 @@ public class FastQC extends SeqModuleImpl implements SeqModule
 	public void executeTask() throws Exception
 	{
 		String propName = this.getClass().getSimpleName() + ScriptModule.SCRIPT_BATCH_SIZE.substring( ScriptModule.SCRIPT_BATCH_SIZE.indexOf( "." ) + 1 );
-		if( Config.getModuleProperty( this, propName ) == null )
+		if( Config.getPositiveInteger(this, propName) == null )
 		{
 			Config.setConfigProperty( propName, "1" );
 		}
