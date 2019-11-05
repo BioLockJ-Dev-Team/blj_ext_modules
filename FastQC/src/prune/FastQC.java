@@ -33,7 +33,7 @@ public class FastQC extends SeqModuleImpl implements SeqModule, ScriptModule
 	public List<List<String>> buildScript( List<File> files ) throws Exception
 	{
 		final List<List<String>> data = new ArrayList<>();
-		int batchSize = Config.requirePositiveInteger( this, SCRIPT_NUM_THREADS );
+		int batchSize = Config.requirePositiveInteger( this, Constants.SCRIPT_NUM_THREADS );
 
 		if( DockerUtil.inDockerEnv() )//TODO - docker mode doesn't always mean it should only have one batch
 		{
@@ -90,11 +90,11 @@ public class FastQC extends SeqModuleImpl implements SeqModule, ScriptModule
 		super.checkDependencies();
 		checkParams();
 		if (Config.getPositiveInteger(this, SCRIPT_BATCH_SIZE) !=  1 
-				&& Config.getPositiveInteger(this, SCRIPT_NUM_THREADS) > 1 ) {
+				&& Config.getPositiveInteger(this, Constants.SCRIPT_NUM_THREADS) > 1 ) {
 			Log.info(this.getClass(), "The FastQC module runs most efficiently when " + SCRIPT_BATCH_SIZE 
 					+ " is set to 1, (currenlty set to [" + Config.getPositiveInteger(this, SCRIPT_BATCH_SIZE) + "])." +
 					"Each node is currently set to process [" + 
-					Config.getPositiveInteger(this, SCRIPT_NUM_THREADS) + "] files at a time because of the " + SCRIPT_NUM_THREADS + "] parameter.");
+					Config.getPositiveInteger(this, Constants.SCRIPT_NUM_THREADS) + "] files at a time because of the " + Constants.SCRIPT_NUM_THREADS + "] parameter.");
 		}
 	}
 
@@ -113,12 +113,12 @@ public class FastQC extends SeqModuleImpl implements SeqModule, ScriptModule
 		if( allParams.indexOf( NUM_THREADS_PARAM ) > -1 )
 		{
 			throw new Exception( "Invalid module option (" + NUM_THREADS_PARAM + ") found in property("
-					+ EXE_FASTQC_PARAMS + "). BioLockJ derives this value from property: " + SCRIPT_NUM_THREADS );
+					+ EXE_FASTQC_PARAMS + "). BioLockJ derives this value from property: " + Constants.SCRIPT_NUM_THREADS );
 		}
 		if( allParams.indexOf( NUM_THREADS_PARAM_SHORT ) > -1 )
 		{
 			throw new Exception( "Invalid module option (" + NUM_THREADS_PARAM_SHORT + ") found in property("
-					+ EXE_FASTQC_PARAMS + "). BioLockJ derives this value from property: " + SCRIPT_NUM_THREADS );
+					+ EXE_FASTQC_PARAMS + "). BioLockJ derives this value from property: " + Constants.SCRIPT_NUM_THREADS );
 		}
 		if( allParams.indexOf( OUTPUT_PARAM ) > -1 )
 		{
@@ -164,6 +164,8 @@ public class FastQC extends SeqModuleImpl implements SeqModule, ScriptModule
 	 * parameters
 	 */
 	protected static final String EXE_FASTQC_PARAMS = "exe.fastqcParams";
+	
+	private static final String SCRIPT_BATCH_SIZE = "fastcq.batchSize";
 
 	private static final String NUM_THREADS_PARAM = "--threads";
 	private static final String NUM_THREADS_PARAM_SHORT = "-t ";
