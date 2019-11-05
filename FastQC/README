@@ -7,8 +7,9 @@ docker run -e BLJ_OPTIONS="-b /Users/ieclabau/git/BioLockJ/pipelines -c /mnt/efs
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v /Users/ieclabau/git/blj_support/resources/test/data/wgs_fastq:/mnt/efs/input \
 -v /Users/ieclabau/git/BioLockJ/pipelines:/mnt/efs/pipelines:delegated \
--v /Users/ieclabau/git/blj_ext_modules/FastQC/test/:/mnt/efs/config \
--v /Users/ieclabau/git/blj_ext_modules/FastQC/dist:/mnt/efs/modules \
+-v ~/git/blj_ext_modules/FastQC/test/:/mnt/efs/config \
+-v ~/git/blj_ext_modules/FastQC/dist:/mnt/efs/modules \
+-v ${BLJ}:/app/biolockj \
 --entrypoint /mnt/efs/config/testFastQC_InDockerAsExtMod.sh \
 --rm biolockj/biolockj_controller
 
