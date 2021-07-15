@@ -1,0 +1,3 @@
+[submodule "ShowTestVar"]
+	path = ShowTestVar
+	url = https://github.com/BioLockJ-Dev-Team/ShowTestVar.git
