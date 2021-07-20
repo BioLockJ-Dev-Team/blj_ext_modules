@@ -4,3 +4,6 @@
 [submodule "BioLockJ"]
 	path = BioLockJ
 	url = https://github.com/BioLockJ-Dev-Team/BioLockJ.git
+[submodule "HelloModules"]
+	path = HelloModules
+	url = https://github.com/BioLockJ-Dev-Team/HelloModules.git
