@@ -7,3 +7,6 @@
 [submodule "HelloModules"]
 	path = HelloModules
 	url = https://github.com/BioLockJ-Dev-Team/HelloModules.git
+[submodule "FastQC"]
+	path = FastQC
+	url = https://github.com/BioLockJ-Dev-Team/FastQC.git
